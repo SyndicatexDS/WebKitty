@@ -2,7 +2,7 @@
 
 # RustLabs.io
 
-<img src="includes/assets/icons/webkitty.svg" width="220" alt="RustLabs.io Logo">
+<img src="includes/assets/icons/rustlabs-logo.png" width="220" alt="RustLabs.io Logo">
 
 **A modular collection of WebKit-based exploit chains for the PlayStation 4.**
 
