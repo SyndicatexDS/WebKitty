@@ -1,16 +1,16 @@
 <div align="center">
 
-# WebKitty
+# RustLabs.io
 
-<img src="includes/assets/icons/webkitty.svg" width="220" alt="WebKitty Logo">
+<img src="includes/assets/icons/webkitty.svg" width="220" alt="RustLabs.io Logo">
 
 **A modular collection of WebKit-based exploit chains for the PlayStation 4.**
 
 *(Formerly known as PSFree Enhanced)*
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/ArabPixel/WebKitty)](https://github.com/ArabPixel/WebKitty/issues)
-[![GitHub stars](https://img.shields.io/github/stars/ArabPixel/WebKitty)](https://github.com/ArabPixel/WebKitty/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/SYNDICATE/RustLabs.io)](https://github.com/SYNDICATE/RustLabs.io/issues)
+[![GitHub stars](https://img.shields.io/github/stars/SYNDICATE/RustLabs.io)](https://github.com/SYNDICATE/RustLabs.io/stargazers)
 
 [Features](#features) • [Firmware Compatibility](#supported-by-this-repository) • [Deployment](#deployment--hosting) • [Screenshots](#screenshots) • [Contributing](#contribution) • [Credits](#credits)
 
@@ -35,7 +35,7 @@
 - **Multilingual Support:** Dynamic language switcher.
 
 ### Advanced Local & Network Features
-Offers expanded functionality when hosted locally on a PC or PS4 using **[PS4-Websrv](https://github.com/ArabPixel/ps4-websrv)**:
+Offers expanded functionality when hosted locally on a PC or PS4 using **[PS4-Websrv](https://github.com/SYNDICATE/ps4-websrv)**:
 - **Network Scanner:** Ability to scan the local network to find the PS4.
 - **Remote Payload Delivery:** Send the available or custom payloads from any smart device directly to the PS4.
 
@@ -64,15 +64,15 @@ This table indicates firmware versions for which the *current version* of this r
 ## Deployment & Hosting
 
 ### Option 1: Access via Remote Host
-Open the PS4 web browser and navigate directly http://webkitty.arabpixel.net/
-> In case the above link can not be resolved or similarly, you may want to attempt to use the following mirror of WebKitty: arabpixel.gitlab.io/WebKitty
+Open the PS4 web browser and navigate directly http://rustlabs.io/
+> In case the above link can not be resolved or similarly, you may want to attempt to use the following mirror of RustLabs.io: syndicate.gitlab.io/RustLabs.io
 
 ### Option 2: Local Hosting (PC / PS4 Server)
 1. Clone the repository:
    ```bash
-   git clone https://github.com/ArabPixel/WebKitty.git
+   git clone https://github.com/SYNDICATE/RustLabs.io.git
    ```
-2. Serve the directory using any standard Web server (e.g., Nginx, Apache, Python HTTP server, or **[PS4-Websrv](https://github.com/ArabPixel/ps4-websrv)**).
+2. Serve the directory using any standard Web server (e.g., Nginx, Apache, Python HTTP server, or **[PS4-Websrv](https://github.com/SYNDICATE/ps4-websrv)**).
 3. Open the browser on your PS4, that's it!
 
 ---
@@ -157,10 +157,10 @@ Open the PS4 web browser and navigate directly http://webkitty.arabpixel.net/
 
 ## Contribution
 
-You can contribute to WebKitty by:
+You can contribute to RustLabs.io by:
 - Creating pull requests for new translations in the [`languages` folder](includes/js/languages).
 - Modifying, updating, or implementing new host features.
-- Reporting bugs or suggesting enhancements via [issues](https://github.com/ArabPixel/WebKitty/issues/new).
+- Reporting bugs or suggesting enhancements via [issues](https://github.com/SYNDICATE/RustLabs.io/issues/new).
 - In case your PR has edits inside `jailbreak.js` file, do not forget to generate `jailbreak-legacy.js` by typing
 ```
 npm install # in case you didn't install them already.
@@ -185,7 +185,7 @@ AGPL-3.0-or-later (see [LICENSE](LICENSE)). Part of this repo belongs to the gro
 - **Egycnq:** Porting Netctrl to slopkit.
 - **Feyzee61:** For the PSFree lapse bundle (single file) and 6.7x exploit implementations.
 - **Fire30:** For Bad Hoist userland exploit.
-- **GattoDev:** For the WebKitty logo.
+- **GattoDev:** For the RustLabs.io logo.
 - **Jordy and Sonic-Iso:** Original Slopkit project.
 - **Nathan Fargo and ufm42:** For CSSFontFace userland exploit.
 - **Payload developers:** For their payloads.

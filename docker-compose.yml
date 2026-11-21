@@ -1,0 +1,7 @@
+services:
+  rustlabs-web:
+    build: .
+    container_name: rustlabs-web
+    restart: unless-stopped
+    ports:
+      - "80:80"

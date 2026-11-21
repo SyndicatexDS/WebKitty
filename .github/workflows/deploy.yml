@@ -1,0 +1,33 @@
+name: Auto-Deploy to Pelican
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Pelican Server Update / Restart
+        run: |
+          if [ -z "${{ secrets.PELICAN_API_KEY }}" ] || [ -z "${{ secrets.PELICAN_SERVER_ID }}" ]; then
+            echo "Secrets PELICAN_API_KEY or PELICAN_SERVER_ID not set. Skipping remote restart."
+            exit 0
+          fi
+
+          echo "Sending restart signal to Pelican server..."
+          response=$(curl -s -w "%{http_code}" -o /tmp/pelican_resp.json \
+            -X POST "https://panel.rustlabs.io/api/client/servers/${{ secrets.PELICAN_SERVER_ID }}/power" \
+            -H "Authorization: Bearer ${{ secrets.PELICAN_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -H "Accept: application/json" \
+            -d '{"signal": "restart"}')
+
+          if [ "$response" -eq 204 ] || [ "$response" -eq 200 ]; then
+            echo "Pelican server restarted successfully. Fresh code will be pulled."
+          else
+            echo "Pelican API returned status $response"
+            cat /tmp/pelican_resp.json
+            exit 1
+          fi

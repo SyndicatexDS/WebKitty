@@ -28,7 +28,7 @@ Special thanks to:
 - nhk
 - Dr.Yenyen
 - AlAzif
-- ArabPixel
+- SYNDICATE
 - synacktiv [writeup](https://www.synacktiv.com/publications/this-is-for-the-pwners-exploiting-a-webkit-0-day-in-playstation-4) 
 - cow
 - idlesauce
