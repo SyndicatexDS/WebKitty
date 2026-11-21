@@ -2,8 +2,9 @@
   "name": "RustLabs.io",
   "version": "1.5.1",
   "description": "A web interface to jailbreak your PS4",
-  "main": "index.html",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "build": "babel includes/js/jailbreak.js --out-file includes/js/jailbreak-legacy.js --presets=@babel/preset-env",
     "watch": "babel includes/js/jailbreak.js --out-file includes/js/jailbreak-legacy.js --presets=@babel/preset-env --watch"
   },
