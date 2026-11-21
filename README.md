@@ -64,7 +64,7 @@ This table indicates firmware versions for which the *current version* of this r
 ## Deployment & Hosting
 
 ### Option 1: Access via Remote Host
-Open the PS4 web browser and navigate directly http://rustlabs.io/
+Open the PS4 web browser and navigate directly http://playstation.rustlabs.io/
 > In case the above link can not be resolved or similarly, you may want to attempt to use the following mirror of RustLabs.io: syndicate.gitlab.io/RustLabs.io
 
 ### Option 2: Local Hosting (PC / PS4 Server)
