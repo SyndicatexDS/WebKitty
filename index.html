@@ -65,9 +65,21 @@
     <main class="mainContainer">
         <section id="initial-screen" class="relative flex flex-col items-center justify-center min-h-screen p-6 transition-opacity duration-700
             opacity-100">
-            <!-- Header Buttons -->
-            <header class="absolute top-6 left-6 flex space-x-3 rtl:space-x-reverse z-10">
-                <div>
+            <!-- Pelican Cloud Navigation Bar -->
+            <header class="absolute top-6 left-6 right-6 flex justify-between items-center z-10" style="width: auto;">
+                <div class="flex items-center space-x-3">
+                    <span class="text-blue-400 font-bold text-lg tracking-wide flex items-center gap-2">
+                        <span style="color: #60a5fa; font-size: 1.25rem;">✦</span> RustLabs.io
+                    </span>
+                    <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 hidden sm:inline-block">
+                        PS4 Node
+                    </span>
+                    <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hidden md:inline-flex items-center gap-1.5">
+                        <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#34d399;box-shadow:0 0 8px #34d399;"></span>
+                        Systems Operational
+                    </span>
+                </div>
+                <div class="flex items-center space-x-2">
                     <button onclick="settingsPopup()"
                         class="settings-btn p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
                         title="Settings">
@@ -101,11 +113,11 @@
                                 d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.92 0 1.7-.71 1.7-1.63 0-.44-.17-.85-.45-1.16-.27-.3-.43-.71-.43-1.15 0-.92.75-1.66 1.67-1.66h2.24c2.8 0 5.07-2.27 5.07-5.07 0-5.25-4.38-9.33-9.7-9.33z" />
                         </svg>
                     </button>
+                    <button id="updateCache"
+                        class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white text-sm font-medium">
+                        Update Cache
+                    </button>
                 </div>
-                <button id="updateCache"
-                    class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white">
-                    Update Cache
-                </button>
             </header>
 
             <!-- PS Button -->
