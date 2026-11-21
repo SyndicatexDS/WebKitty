@@ -140,8 +140,11 @@ function CheckFW() {
         }
 
         if (ui.ps4FwStatus) {
-            ui.ps4FwStatus.style.color = 'red';
+            ui.ps4FwStatus.style.color = '#f87171';
             ui.ps4FwStatus.style.textAlign = 'center';
+        }
+        if (ui.exploitChainLabel && (ui.exploitChainLabel.textContent === '-' || !ui.exploitChainLabel.textContent)) {
+            ui.exploitChainLabel.textContent = 'PS4 WebKit Host';
         }
     }
 }
