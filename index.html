@@ -179,12 +179,26 @@
             </div>
 
             <!-- Scroll Down Icon -->
-            <button id="scrollDown" class="absolute bottom-10 cursor-pointer"
+            <button id="scrollDown" class="absolute bottom-12 cursor-pointer"
                 onclick="ui.exploitScreen.scrollIntoView({block: 'end'});">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" fill="currentColor" viewBox="0 0 512 512">
                     <polyline points="112 184 256 328 400 184"></polyline>
                 </svg>
             </button>
+
+            <!-- Pelican Cloud Node Footer -->
+            <footer class="absolute bottom-3 left-6 right-6 hidden md:flex justify-between items-center text-xs text-white/40 pointer-events-none select-none z-10">
+                <div class="flex items-center gap-2">
+                    <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#34d399;box-shadow:0 0 6px #34d399;"></span>
+                    <span>Node: <strong class="text-white/60">RustLabs FRA-1</strong> (Hetzner Cloud)</span>
+                </div>
+                <div>
+                    <span>Runtime: <strong class="text-white/60">Pelican Core</strong> · Port 9603</span>
+                </div>
+                <div>
+                    <span>RustLabs.io <strong class="text-blue-400">v2.0</strong> · Powered by SYNDICATE</span>
+                </div>
+            </footer>
         </section>
 
         <!-- Exploit section -->
@@ -363,6 +377,11 @@
                                 <option value="14.02">14.02</option>
                             </select>
                         </div>
+                    </div>
+                    <div class="payload-search-bar mb-2">
+                        <input type="text" id="payloadSearchInput" placeholder="🔍 Search payloads (e.g. FTP, Linux, Dumper)..."
+                            oninput="filterPayloads(this.value)"
+                            class="w-full bg-slate-900/60 border border-white/10 rounded-xl px-4 py-2 text-xs text-white placeholder-white/40 focus:outline-none focus:border-blue-500 transition-all">
                     </div>
                     <div class="border-b border-gray-200 border-gray-700 w-full sticky top-0 bg-gray-800 z-10 tabs">
                         <ul class="flex flex-wrap -mb-px text-sm font-medium text-center w-full" id="default-tab"

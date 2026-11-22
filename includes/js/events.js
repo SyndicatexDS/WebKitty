@@ -20,6 +20,7 @@ ui.mainContainer.addEventListener('scroll', function () {
 
 // Jailbreak launch
 ui.exploitRunBtn.addEventListener('click', function () {
+    playSound('click');
     if (user.blockJailbreak) return;
     user.blockJailbreak = true;
     chooseHEN();
@@ -27,6 +28,7 @@ ui.exploitRunBtn.addEventListener('click', function () {
 });
 
 ui.psLogoContainer.addEventListener('click', function () {
+    playSound('click');
     if (user.blockJailbreak) return;
     user.blockJailbreak = true;
     chooseHEN();

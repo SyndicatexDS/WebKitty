@@ -233,3 +233,24 @@ function isPayloadSupported(payload) {
     }
     return false;
 }
+
+/**
+ * Filters rendered payload cards by search query in real-time.
+ */
+function filterPayloads(query) {
+    var q = (query || '').toLowerCase().trim();
+    var cards = document.querySelectorAll('.payload-card');
+    for (var i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        if (!q) {
+            card.style.display = '';
+            continue;
+        }
+        var text = (card.textContent || '').toLowerCase();
+        if (text.indexOf(q) !== -1) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    }
+}

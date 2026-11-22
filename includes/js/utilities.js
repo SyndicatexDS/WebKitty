@@ -118,6 +118,8 @@ function jailbreakSuccess(statusMessage) {
     log(" Console is now in Jailbroken Environment", "#34d399");
     log("==========================================\n", "#22c55e");
 
+    playSound('success');
+
     if (getReloadAfterJbValue() && !isBinLoader) {
         setTimeout(function () { window.location.href = mainPage; }, 5000);
     }
@@ -156,5 +158,46 @@ function toggleVisibility(id, show) {
         el.classList.remove('hidden');
     } else {
         el.classList.add('hidden');
+    }
+}
+
+// Lightweight Web Audio synth for tactical feedback
+var audioCtx = null;
+function playSound(type) {
+    try {
+        if (!audioCtx) {
+            var AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContext) return;
+            audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+        var osc = audioCtx.createOscillator();
+        var gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        var now = audioCtx.currentTime;
+
+        if (type === 'click') {
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(800, now);
+            osc.frequency.exponentialRampToValueAtTime(350, now + 0.06);
+            gain.gain.setValueAtTime(0.12, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+            osc.start(now);
+            osc.stop(now + 0.06);
+        } else if (type === 'success') {
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(523.25, now);
+            osc.frequency.setValueAtTime(659.25, now + 0.08);
+            osc.frequency.setValueAtTime(783.99, now + 0.16);
+            gain.gain.setValueAtTime(0.15, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+            osc.start(now);
+            osc.stop(now + 0.3);
+        }
+    } catch (e) {
+        // Audio optional / non-blocking
     }
 }
