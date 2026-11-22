@@ -25,7 +25,12 @@ async function jailbreak() {
   cleanUp();
 
   payloadPath = storage.session.getString('payload_path', null);
-  log("Loading: " + payloadPath);
+  var chainLabel = (typeof getChainLabel === 'function' ? getChainLabel(user.exploitChain) : 'Exploit Chain');
+  log("==========================================", "#3b82f6");
+  log(" RustLabs.io Runtime · " + chainLabel, "#60a5fa");
+  log(" Firmware: " + (user.ps4Fw || "Auto") + " | Flavor: " + (user.currentJbFlavor || "GoldHEN"), "#94a3b8");
+  log(" Payload Target: " + (payloadPath ? payloadPath.split('/').pop() : 'Default'), "#94a3b8");
+  log("==========================================\n", "#3b82f6");
 
   // barebone exploit preferred? go to exploit file
   if (user.bareboneJB) {
@@ -51,17 +56,19 @@ async function jailbreak() {
 async function psfreeLapse() {
   if (user.exploitChain === EXPLOIT_CHAINS.PSFREE_MODULAR) { // modular lapse
     try {
-      log("Loading Al-Azif's PSFree Lapse Modular implementation..");
+      log("[STAGE 1/2] Loading PSFree Lapse Modular...", "#38bdf8");
       await getScript('./src/psfree-lapse/alert.mjs', true, devMode);
+      log("[STAGE 2/2] Triggering Kernel Exploit...", "#60a5fa");
     } catch (e) {
       log("alert.mjs is not defined", "red");
     }
   } else { // bundle lapse
-    log("Loading Feyzee61's PSFree Lapse Bundle implementation..");
+    log("[STAGE 1/2] Initializing PSFree Lapse Bundle...", "#38bdf8");
     try {
       await loadScript('./src/psfree-lapse/bundle.js', false, devMode);
 
       if (typeof doJailBreak === "function") {
+        log("[STAGE 2/2] Triggering Kernel Exploit...", "#60a5fa");
         doJailBreak();
       } else {
         log("Error: doJailBreak is not defined", "red");
@@ -74,7 +81,7 @@ async function psfreeLapse() {
 
 // Taken from Feyzee61 ps4jb
 async function badHoistJailbreak() {
-  log("Checking Userland Exploit Status...");
+  log("[STAGE 1/2] Checking Bad Hoist Userland Status...", "#38bdf8");
   var jailbreakNow = storage.session.getBoolean('jailbreakNow', false);
   if (!jailbreakNow) {
     // set jailbreakNow to true, on reload to load userland exploit
@@ -87,7 +94,7 @@ async function badHoistJailbreak() {
     storage.session.remove('jailbreakNow');
     return;
   } else {
-    log("Bad Hoist Entrypoint succeeded");
+    log("Bad Hoist Entrypoint succeeded", "green");
   }
 
   if (window.exploitsetup672_result < 1) {
@@ -95,10 +102,10 @@ async function badHoistJailbreak() {
     storage.session.remove('jailbreakNow');
     return;
   } else {
-    log("Exploit Setup complete\n");
+    log("Exploit Setup complete\n", "green");
   }
 
-  log("Starting Kernel Exploit...");
+  log("[STAGE 2/2] Starting Kernel Exploit & Payload Delivery...", "#60a5fa");
   await sleep(200); // Wait 200ms
 
   await loadScript('./src/badhoist/672kexploit.js', false, devMode);
@@ -152,46 +159,51 @@ async function badHoistJailbreak() {
 }
 
 async function cssFontFaceJailbreak() {
-  log("Loading ufm42's CSSFontFace exploit chain implementation..");
+  log("[STAGE 1/2] Loading CSSFontFace Exploit Chain...", "#38bdf8");
   await getScript('src/cssfontface/main.js', false, devMode);
+  log("[STAGE 2/2] Triggering CSSFontFace Kernel R/W...", "#60a5fa");
   doCssFontFaceJailbreak();
 }
 
 async function slopKit() {
-  log("Loading Raw-Game's SlopKit exploit chain implementation..");
+  log("[STAGE 1/2] Loading SlopKit Exploit Chain...", "#38bdf8");
   try {
     if (user.exploitChain === EXPLOIT_CHAINS.SLOPKIT_NETCTRL) {
       await getScript("src/slopkit/chain_poops.js", true, devMode);
     } else {
       await getScript("src/slopkit/chain_lapse.js", true, devMode);
     }
+    log("[STAGE 2/2] Executing SlopKit R/W Chain...", "#60a5fa");
   } catch (error) {
     log(error, "red");
   }
 }
 
 async function relapseJailbreak() {
-  log("Loading Raw Game's Relapse exploit chain implementation..");
+  log("[STAGE 1/2] Loading SlopKit Relapse Engine...", "#38bdf8");
   try {
     await getScript("src/relapse/jb.js?v=10", true, devMode);
+    log("[STAGE 2/2] Triggering Relapse Kernel Chain...", "#60a5fa");
   } catch (error) {
     log(error, "red");
   }
 }
 
 async function slopkitAfterglow() {
-  log("Loading SlopKit Afterglow exploit chain implementation..");
+  log("[STAGE 1/2] Loading SlopKit Afterglow Engine...", "#38bdf8");
   try {
     await getScript("src/slopkit-afterglow/jb.js", true, devMode);
+    log("[STAGE 2/2] Executing Afterglow Exploit Chain...", "#60a5fa");
   } catch (error) {
     log(error, "red");
   }
 }
 
 async function bpfDoubleFree() {
-  log("Loading bpf double free exploit chain implementation..");
+  log("[STAGE 1/2] Loading BPF Double Free Exploit Chain...", "#38bdf8");
   try {
     await getScript("src/bpf-double-free/main.js", false, devMode);
+    log("[STAGE 2/2] Triggering BPF Double Free Kernel Primitive...", "#60a5fa");
     loadBpfDoubleFree();
   } catch (error) {
     log(error, "red");
@@ -199,9 +211,10 @@ async function bpfDoubleFree() {
 }
 
 async function wobkot() {
-  log("Loading ufm42's wobkot exploit chain implementation..");
+  log("[STAGE 1/2] Loading Wobkot Lapse Engine...", "#38bdf8");
   try {
     await getScript("src/wobkot/main.js", false, devMode);
+    log("[STAGE 2/2] Executing Wobkot Kernel Primitive...", "#60a5fa");
   } catch (error) {
     log(error, "red");
   }

@@ -113,6 +113,11 @@ function jailbreakSuccess(statusMessage) {
 
     updateJbStats(0, 1);
 
+    log("\n==========================================", "#22c55e");
+    log(" ✔ ALL STAGES COMPLETED SUCCESSFULLY", "#34d399");
+    log(" Console is now in Jailbroken Environment", "#34d399");
+    log("==========================================\n", "#22c55e");
+
     if (getReloadAfterJbValue() && !isBinLoader) {
         setTimeout(function () { window.location.href = mainPage; }, 5000);
     }

@@ -517,3 +517,22 @@ input[type="radio"]:checked {
     border-color: #d1d5db;
     /* Approximation for gray-300 */
 }
+
+/* DualShock 4 Controller Focus Rings for TV / Console Navigation */
+:focus-visible,
+button:focus-visible,
+a:focus-visible,
+input[type="radio"]:focus-visible,
+input[type="checkbox"]:focus-visible,
+.payload:focus-visible,
+.payload:focus-within {
+    outline: 2px solid #38bdf8 !important;
+    outline-offset: 3px !important;
+    box-shadow: 0 0 16px rgba(56, 189, 248, 0.6) !important;
+}
+
+#pslogo:focus-visible #ps-logo-container {
+    border-color: #60a5fa !important;
+    box-shadow: 0 0 70px rgba(59, 130, 246, 0.7), inset 0 0 30px rgba(59, 130, 246, 0.3) !important;
+    transform: scale(1.05) !important;
+}
